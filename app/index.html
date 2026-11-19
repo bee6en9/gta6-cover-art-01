@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; base-uri 'none'">
+  <title>Vice City Cover Studio</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="identity">
+      <span class="emblem" aria-hidden="true">V</span>
+      <h1>Vice City <small>Cover Studio</small></h1>
+    </div>
+    <span class="offline">Local workspace</span>
+    <div class="output">
+      <select id="size" aria-label="Export dimensions">
+        <option value="1080x1080">1080 × 1080</option>
+        <option value="1080x1350">1080 × 1350</option>
+        <option value="1920x1080">1920 × 1080</option>
+      </select>
+      <button id="download">↓ &nbsp; Export PNG</button>
+    </div>
+  </header>
+  <main>
+    <aside class="settings" aria-label="Cover settings">
+      <section>
+        <h2>Photos</h2>
+        <div class="photo-actions">
+          <label class="upload">＋ Add photos<input type="file" id="files" accept="image/*" multiple></label>
+          <button id="samples">Try samples</button>
+        </div>
+        <label class="pair">Panel <select id="panel"></select></label>
+        <label class="pair">Panel photo <select id="source"></select></label>
+        <label class="pair">Zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+      </section>
+      <section>
+        <h2>Layout</h2>
+        <div class="layouts" role="group" aria-label="Panel layout">
+          <button data-layout="hero"><i aria-hidden="true"></i>Hero</button>
+          <button data-layout="grid"><i aria-hidden="true"></i>Grid</button>
+          <button data-layout="split"><i aria-hidden="true"></i>Split</button>
+          <button data-layout="single"><i aria-hidden="true"></i>Full</button>
+        </div>
+      </section>
+      <section>
+        <h2>Lettering</h2>
+        <label>Caption <input id="caption" maxlength="60" value="Paradise After Dark"></label>
+        <label>Subtitle <input id="subtitle" maxlength="65" value="Somewhere on the South Coast"></label>
+      </section>
+      <section>
+        <h2>Color grade</h2>
+        <div class="grades" role="group" aria-label="Color grade">
+          <button data-grade="sunset">Sunset</button>
+          <button data-grade="night">Neon</button>
+          <button data-grade="dawn">Dawn</button>
+        </div>
+      </section>
+    </aside>
+    <section class="workspace" aria-label="Cover preview">
+      <div class="preview-title"><h2>Cover preview</h2><span id="dimensions"></span></div>
+      <div class="stage">
+        <canvas id="cover" width="1080" height="1080" tabindex="0" aria-label="Cover preview. Select a panel with keys 1–4 and use the arrow keys to pan."></canvas>
+      </div>
+      <div class="feedback"><span id="hint"></span><span id="status" role="status"></span></div>
+    </section>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
